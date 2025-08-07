@@ -11,8 +11,8 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/dta4/go-rbfs-client/pkg/rbfs"
-	"github.com/dta4/go-rbfs-client/pkg/rbfs/state"
+	"github.com/dtA4/go-rbfs-client/pkg/rbfs"
+	"github.com/dtA4/go-rbfs-client/pkg/rbfs/state"
 )
 
 // This function variable we need to be able to mock the API Service

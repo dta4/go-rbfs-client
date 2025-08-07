@@ -1,4 +1,4 @@
-module github.com/dta4/go-rbfs-client
+module github.com/dtA4/go-rbfs-client
 
 go 1.21
 
