@@ -8,8 +8,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/dtA4/go-rbfs-client/pkg/rbfs"
-	"github.com/dtA4/go-rbfs-client/pkg/rbfs/state"
+	"github.com/dta4/go-rbfs-client/pkg/rbfs"
+	"github.com/dta4/go-rbfs-client/pkg/rbfs/state"
 )
 
 type (

@@ -13,8 +13,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/dtA4/go-rbfs-client/pkg/rbfs"
-	"github.com/dtA4/go-rbfs-client/pkg/rbfs/state"
+	"github.com/dta4/go-rbfs-client/pkg/rbfs"
+	"github.com/dta4/go-rbfs-client/pkg/rbfs/state"
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 )

@@ -7,11 +7,11 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/dtA4/go-rbfs-client/pkg/rbfs"
-	"github.com/dtA4/go-rbfs-client/pkg/rbfs/alerts"
-	"github.com/dtA4/go-rbfs-client/pkg/rbfs/elements"
-	"github.com/dtA4/go-rbfs-client/pkg/rbfs/metrics"
-	"github.com/dtA4/go-rbfs-client/pkg/rbfs/services"
+	"github.com/dta4/go-rbfs-client/pkg/rbfs"
+	"github.com/dta4/go-rbfs-client/pkg/rbfs/alerts"
+	"github.com/dta4/go-rbfs-client/pkg/rbfs/elements"
+	"github.com/dta4/go-rbfs-client/pkg/rbfs/metrics"
+	"github.com/dta4/go-rbfs-client/pkg/rbfs/services"
 )
 
 var client http.Client

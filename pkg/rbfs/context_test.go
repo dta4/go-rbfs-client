@@ -10,7 +10,7 @@ import (
 	"net/url"
 	"testing"
 
-	"github.com/dtA4/go-rbfs-client/pkg/rbfs/state"
+	"github.com/dta4/go-rbfs-client/pkg/rbfs/state"
 	"github.com/stretchr/testify/require"
 )
 

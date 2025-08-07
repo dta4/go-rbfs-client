@@ -11,7 +11,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/dtA4/go-rbfs-client/pkg/rbfs/state"
+	"github.com/dta4/go-rbfs-client/pkg/rbfs/state"
 )
 
 const (
