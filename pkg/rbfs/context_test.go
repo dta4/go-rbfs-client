@@ -10,7 +10,7 @@ import (
 	"net/url"
 	"testing"
 
-	"github.com/rtbrick/go-rbfs-client/pkg/rbfs/state"
+	"github.com/dtA4/go-rbfs-client/pkg/rbfs/state"
 	"github.com/stretchr/testify/require"
 )
 
