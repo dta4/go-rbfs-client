@@ -28,12 +28,13 @@ func UserAgent(value string) Option {
 	}
 }
 
-// GetAPIClient creates a new API client for the given endpoint.
+// GetAPIClient creates a new API client for the specified endpoint, using TOS 192 by default.
+// All RBFS network management communications use TOS 192 to ensure the highest transmission priority.
 func GetAPIClient(client *http.Client, endpoint *url.URL, options ...Option) *state.APIClient {
 	config := state.NewConfiguration()
 	config.BasePath = endpoint.String()
 	config.Host = endpoint.Host
-	config.HTTPClient = client
+	config.HTTPClient = CreateNewHTTPClient(192)
 	config.UserAgent = "go-client"
 	for _, option := range options {
 		option(config)
