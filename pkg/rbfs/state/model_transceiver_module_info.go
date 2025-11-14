@@ -28,6 +28,8 @@ type TransceiverModuleInfo struct {
 	TransceiverCapabilities string `json:"transceiver_capabilities,omitempty"`
 	// The optics connector type.
 	ConnectorType string `json:"connector_type,omitempty"`
+	// The transceiver media type.
+	MediaType string `json:"media_type,omitempty"`
 	// The optics power class.
 	PowerClass int `json:"power_class,omitempty"`
 	// The power class rating.

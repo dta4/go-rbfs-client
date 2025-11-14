@@ -26,6 +26,8 @@ type OpticModule struct {
 	OpticsType string `json:"optics_type,omitempty"`
 	// The optics connector type.
 	ConnectorType string `json:"connector_type,omitempty"`
+	// The optics media type.
+	MediaType string `json:"media_type,omitempty"`
 	// The optics power class.
 	PowerClass string `json:"power_class,omitempty"`
 	// The optics power state class. This attribute has been marked deprecated and will be removed in a future release. Please use the power_class_mode attribute instead.
