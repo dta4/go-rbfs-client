@@ -6858,6 +6858,9 @@ components:
         connector_type:
           description: The optics connector type.
           type: string
+        media_type:
+          description: The optics media type.
+          type: string
         power_class:
           description: The optics power class.
           type: string
@@ -7033,6 +7036,9 @@ components:
         connector_type:
           description: The optics connector type.
           type: string
+        media_type:
+          description: The transceiver media type.
+          type: string
         power_class:
           description: The optics power class.
           type: integer
@@ -7080,6 +7086,9 @@ components:
           type: string
         connector_type:
           description: The optics connector type.
+          type: string
+        media_type:
+          description: The transceiver media type.
           type: string
         power_class:
           description: The optics power class.
