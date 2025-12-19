@@ -10249,7 +10249,7 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/OpticModule"
-        transceiver:
+        transceivers:
           type: array
           items:
             $ref: "#/components/schemas/TransceiverModuleInfo"
