@@ -9,11 +9,14 @@
  */
 package state
 
-// System hardware inventory.
-type SystemHardware struct {
-	Chassis      *Chassis                `json:"chassis,omitempty"`
-	Psus         []Psu                   `json:"psus,omitempty"`
-	Fans         []Fan                   `json:"fans,omitempty"`
-	Optics       []OpticModule           `json:"optics,omitempty"`
-	Transceivers []TransceiverModuleInfo `json:"transceivers,omitempty"`
+// The optical lane information.
+type Lane struct {
+	// The lane ID.
+	LaneId int `json:"lane_id,omitempty"`
+	// The optic temperature in degree celsius.  **Deprecated**. Moved to the optic because the temperature value exists for the entire optic rather than per lane.
+	TemperatureCelsius float64 `json:"temperature_celsius,omitempty"`
+	// The optic temperature in degree celsius.  **Deprecated**. Moved to the optic because the voltage exists for the entire optic rather than per lane.
+	Voltage float64 `json:"voltage,omitempty"`
+	Tx      *LaneTx `json:"tx,omitempty"`
+	Rx      *LaneRx `json:"rx,omitempty"`
 }

@@ -34,6 +34,8 @@ tags:
     description: Link Layer Discovery Protocol
   - name: System
     description: System hardware and software
+  - name: Optics
+    description: Optics Information
   - name: Transceivers
     description: Transceiver Information.
   - name: Access
@@ -374,121 +376,6 @@ paths:
           $ref: "#/components/responses/403"
         500:
           $ref: "#/components/responses/500"
-  /actions/traceroute-mpls:
-    post:
-      summary: Traces the LSP to the given destination IP prefix (FEC).
-      operationId: tracerouteMpls
-      description: |
-        Traces the LSP to the given destination from the specified source IP or source IFL with the provided settings.
-        
-        Three options exist to specify the traceroute destination:
-
-        1. Use `destination_ip_fec` to specify the destination IP address in IPv6 or IPv4 format.
-        2. Use `destination_aaaa` to query the DNS for an AAAA record for the specified host name.
-        3. Use `destination_a` to query the DNS for an A record for the specified host name.
-
-        The precedence is in the above ordering if multiple destinations are specified.
-        An error is returned if no destination is specified.
-      tags:
-      - Actions
-      parameters:
-      - in: query
-        name: fec_type
-        description: The FEC type.
-        required: false
-        schema:
-          type: string
-          default: ldp
-          enum:
-          - ldp
-          - isis
-      - in: query 
-        name: destination_ip_fec
-        description: Destination IPv4 or IPv6 prefix.
-        required: false
-        schema: 
-          type: string
-      - in: query 
-        name: destination_aaaa
-        description: Destination hostname to query DNS for an AAAA record (IPv6)
-        required: false
-        schema: 
-          type: string
-      - in: query 
-        name: destination_a
-        description: Destination hostname to query DNS for an A record (IPv4)
-        required: false
-        schema: 
-          type: string      
-      - in: query 
-        name: source_ip
-        description: Source IPv4 or IPv6 address
-        required: false
-        schema: 
-          type: string      
-      - in: query 
-        name: instance_name
-        description: Routing instance name
-        required: false
-        schema: 
-          type: string
-          default: default
-      - in: query 
-        name: max_hops
-        description: Maximum number of acceptable hops to reach the given destination.
-        required: false
-        schema: 
-          type: integer 
-          default: 30
-          minimum: 1
-          maximum: 255 
-      - in: query 
-        name: size
-        description: Packet payload size in bytes.
-        required: false
-        schema: 
-          type: integer 
-          default: 56
-          minimum: 8
-          maximum: 32768          
-      - in: query 
-        name: wait_time
-        description: Maximum wait time between pings.
-        required: false
-        schema: 
-          type: number 
-          #format: float
-          #default: 1.0
-          #minimum: 0.001
-          #maximum: 5.0
-      - in: query 
-        name: interval
-        description: |
-          Ping interval in seconds.
-          DEPRECTATED use wait_time instead.
-        deprecated: true
-        required: false
-        schema: 
-          type: number 
-          # format: float
-          # default: 1.0
-          # minimum: 0.001
-          # maximum: 5.0
-      responses:
-        200:
-          description: The traceroute statistics.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Traceroute"
-        400:
-          $ref: "#/components/responses/400"
-        401:
-          $ref: "#/components/responses/401"
-        403:  
-          $ref: "#/components/responses/403"
-        500:
-          $ref: "#/components/responses/500"  
   /streams/ping:
     post:
       summary: Pings the given destination IP address (ICMP ping).
@@ -806,121 +693,6 @@ paths:
           $ref: "#/components/responses/403"
         500:
           $ref: "#/components/responses/500"
-  /streams/traceroute-mpls:
-    post:
-      summary: Traces the LSP to the given destination IP prefix (FEC).
-      operationId: streamTracerouteMpls
-      description: |
-        Traces the LSP to the given destination from the specified source IP or source IFL with the provided settings.
-        
-        Three options exist to specify the traceroute destination:
-
-        1. Use `destination_ip_fec` to specify the destination IP address in IPv6 or IPv4 format.
-        2. Use `destination_aaaa` to query the DNS for an AAAA record for the specified host name.
-        3. Use `destination_a` to query the DNS for an A record for the specified host name.
-
-        The precedence is in the above ordering if multiple destinations are specified.
-        An error is returned if no destination is specified.
-      tags:
-      - Streams
-      parameters:
-      - in: query
-        name: fec_type
-        description: The FEC type.
-        required: false
-        schema:
-          type: string
-          default: ldp
-          enum:
-          - ldp
-          - isis
-      - in: query 
-        name: destination_ip_fec
-        description: Destination IPv4 or IPv6 prefix.
-        required: false
-        schema: 
-          type: string
-      - in: query 
-        name: destination_aaaa
-        description: Destination hostname to query DNS for an AAAA record (IPv6)
-        required: false
-        schema: 
-          type: string
-      - in: query 
-        name: destination_a
-        description: Destination hostname to query DNS for an A record (IPv4)
-        required: false
-        schema: 
-          type: string      
-      - in: query 
-        name: source_ip
-        description: Source IPv4 or IPv6 address
-        required: false
-        schema: 
-          type: string      
-      - in: query 
-        name: instance_name
-        description: Routing instance name
-        required: false
-        schema: 
-          type: string
-          default: default 
-      - in: query 
-        name: max_hops
-        description: Maximum number of acceptable hops to reach the given destination.
-        required: false
-        schema: 
-          type: integer 
-          default: 30
-          minimum: 1
-          maximum: 255
-      - in: query 
-        name: size
-        description: Packet payload size in bytes.
-        required: false
-        schema: 
-          type: integer 
-          default: 56
-          minimum: 8
-          maximum: 32768          
-      - in: query 
-        name: wait_time
-        description: Maximum wait time between pings.
-        required: false
-        schema: 
-          type: number 
-          #format: float
-          #default: 1.0
-          #minimum: 0.001
-          #maximum: 5.0
-      - in: query 
-        name: interval
-        description: |
-          Ping interval in seconds.
-          DEPRECTATED use wait_time instead.
-        deprecated: true
-        required: false
-        schema: 
-          type: number 
-          # format: float
-          # default: 1.0
-          # minimum: 0.001
-          # maximum: 5.0
-      responses:
-        200:
-          description: The traceroute statistics.
-          content:
-            text/plain:
-              schema:
-                type: string
-        400:
-          $ref: "#/components/responses/400"
-        401:
-          $ref: "#/components/responses/401"
-        403:  
-          $ref: "#/components/responses/403"
-        500:
-          $ref: "#/components/responses/500"  
   /bgp/peerings:
     get:
       summary: Lists all BGP peerings grouped by instance.
@@ -1990,6 +1762,118 @@ paths:
       responses:
         202:
           description: The request has been successful and the neighbor has been cleared.
+        401:
+          $ref: "#/components/responses/401"
+        403:
+          $ref: "#/components/responses/403"
+        404:
+          $ref: "#/components/responses/404"
+        500:
+          $ref: "#/components/responses/500"
+  /optics:
+    get:
+      summary: Lists all attached optics.
+      operationId: getOptics
+      description: |
+        Provides a list of all single-form factor pluggable (SFP) optics
+        attached to this switch.
+      tags:
+        - Optics
+      deprecated: true
+      responses:
+        200:
+          description: The list of discovered optics.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Optic"
+        401:
+          $ref: "#/components/responses/401"
+        403:
+          $ref: "#/components/responses/403"
+        500:
+          $ref: "#/components/responses/500"
+  /optics/{ifp_name}:
+    get:
+      summary: Lists details of an attached optic.
+      operationId: getOptic
+      description: |
+        Provides a list of all single-form factor pluggable (SFP) optics
+        attached to this switch.
+      tags:
+        - Optics
+      deprecated: true
+      parameters:
+        - in: path
+          name: ifp_name
+          description: The physical interface (=port) name.
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: The list of discovered optics.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Optic"
+        401:
+          $ref: "#/components/responses/401"
+        403:
+          $ref: "#/components/responses/403"
+        404:
+          $ref: "#/components/responses/404"
+        500:
+          $ref: "#/components/responses/500"
+  /optics/{ifp_name}/disable:
+    post:
+      summary: Disable the laser.
+      operationId: disableLaser
+      description: |
+        Disables the laser of the optic attached to the given physical port.
+        Be aware that disabling the laser raises a LoS alert on the remote optic.
+      tags:
+        - Optics
+      deprecated: true
+      parameters:
+        - in: path
+          name: ifp_name
+          description: The physical interface (=port) name.
+          required: true
+          schema:
+            type: string
+      responses:
+        204:
+          description: The laser has been disabled.
+        401:
+          $ref: "#/components/responses/401"
+        403:
+          $ref: "#/components/responses/403"
+        404:
+          $ref: "#/components/responses/404"
+        500:
+          $ref: "#/components/responses/500"
+  /optics/{ifp_name}/enable:
+    post:
+      summary: Enables the laser.
+      operationId: enableLaser
+      description: |
+        Enables the laser of the optic attached to the given port.
+      tags:
+        - Optics
+      deprecated: true
+      parameters:
+        - in: path
+          name: ifp_name
+          description: The physical interface (=port) name.
+          required: true
+          schema:
+            type: "string"
+      responses:
+        204:
+          description: The laser has been enabled.
         401:
           $ref: "#/components/responses/401"
         403:
@@ -3317,6 +3201,16 @@ paths:
           required: true
           schema:
             $ref: "#/components/schemas/IfpName"
+        - in: query
+          name: optics
+          description: |
+            Include optic informations in the response.
+            
+            NOTE: Use the /optics endpoint to obtain optics information.
+          deprecated: true
+          schema:
+            type: boolean
+            default: true
       responses:
         200:
           description: The physical interface details.
@@ -5039,7 +4933,7 @@ paths:
     get:
       summary: Shows system hardware inventory
       operationId: getSystemHardware
-      description: Shows chassis, modules, and transceivers.
+      description: Shows chassis, modules, and optics.
       tags:
         - System
       responses:
@@ -6924,6 +6818,183 @@ components:
           description: The number of received prefixes.
           type: integer
 
+    Optic:
+      deprecated: true
+      allOf:
+        - $ref: "#/components/schemas/OpticModule"
+        - type: object
+          properties:
+            lanes:
+              type: array
+              items:
+                $ref: "#/components/schemas/Lane"
+    OpticModule:
+      type: object
+      description: Optical module details.
+      deprecated: true
+      properties:
+        ifp_name:
+          $ref: "#/components/schemas/IfpName"
+        serial_number:
+          description: The optics serial number.
+          type: string
+        part_number:
+          description: The optics part number.
+          type: string
+        material_number:
+          description: |
+            The optics material number.
+            The material number is a unique identifier for the materials management system.
+          type: string
+        vendor_name:
+          description: The optics vendor name.
+          type: string
+        wavelength:
+          description: The optics wave length.
+          type: number
+        optics_type:
+          description: The optics type.
+          type: string
+        connector_type:
+          description: The optics connector type.
+          type: string
+        media_type:
+          description: The optics media type.
+          type: string
+        power_class:
+          description: The optics power class.
+          type: string
+        power_class_state:
+          description: |
+            The optics power state class.
+            This attribute has been marked deprecated and will be removed in a future release.
+            Please use the power_class_mode attribute instead.
+          type: string
+          deprecated: true
+        power_class_mode:
+          description: The optics power class mode.
+          type: string
+        date_manufactured:
+          description: The optics manufacturing date.
+          type: string
+          format: date
+        voltage_v:
+          description: The optics voltage supply in volts.
+          type: number
+        temperature_c:
+          description: The optics temperature in degree celsius.
+          type: number
+    Lane:
+      type: object
+      deprecated: true
+      description: The optical lane information.
+      properties:
+        lane_id:
+          description: The lane ID.
+          type: integer
+        temperature_celsius:
+          description: |
+            The optic temperature in degree celsius.
+            
+            **Deprecated**. Moved to the optic because the temperature value exists for the entire optic rather than per lane.
+          type: number
+          deprecated: true
+        voltage:
+          description: |
+            The optic temperature in degree celsius.
+            
+            **Deprecated**. Moved to the optic because the voltage exists for the entire optic rather than per lane.
+          type: number
+          deprecated: true
+        tx:
+          description: TX-related state.
+          type: object
+          properties:
+            los_alert:
+              description: The status of the Loss-of-Signal (LoS) alert flag.
+              type: boolean
+            power_mw:
+              description: The laser power in milliwatts.
+              type: number
+            power_dbm:
+              description: The laser power in dbm.
+              type: number
+            power_high_alarm_threshold_mw:
+              description: The power high alarm threshold in milliwatts.
+              type: number
+            power_high_alarm_threshold_dbm:
+              description: The power high alarm threshold in dBm.
+              type: number
+            power_high_warn_threshold_mw:
+              description: The power warning threshold in milliwatts.
+              type: number
+            power_high_warn_threshold_dbm:
+              description: The power high warning threshold in dBm.
+              type: number
+            power_low_alarm_threshold_mw:
+              description: The power low alarm threshold in milliwatts.
+              type: number
+            power_low_alarm_threshold_dbm:
+              description: The power low alarm threshold in dBm.
+              type: number
+            power_low_warn_threshold_mw:
+              description: The power low warning threshold in milliwatts.
+              type: number
+            power_low_warn_threshold_dbm:
+              description: The power low warning threshold in dBm.
+              type: number
+            bias_current_ma:
+              description: Laser bias current in mA.
+              type: number
+            bias_current_high_alarm_threshold_ma:
+              description: Laser bias current high alarm threshold in mA.
+              type: number
+            bias_current_high_warning_threshold_ma:
+              description: Laser bias current high warning threshold in mA.
+              type: number
+            bias_current_low_alarm_threshold_ma:
+              description: Laser bias current low alarm threshold in mA.
+              type: number
+            bias_current_low_warning_threshold_ma:
+              description: Laser bias current low warning threshold in mA.
+              type: number
+        rx:
+          description: RX-related state.
+          type: object
+          properties:
+            los_alert:
+              description: The status of the Loss-of-Signal (LoS) alert flag.
+              type: boolean
+            power_mw:
+              description: The laser power in milliwats.
+              type: number
+            power_dbm:
+              description: The laser power in dbm.
+              type: number
+            power_high_alarm_threshold_mw:
+              description: The power high alarm threshold in milliwatts.
+              type: number
+            power_high_alarm_threshold_dbm:
+              description: The power high alarm threshold in dBm.
+              type: number
+            power_high_warn_threshold_mw:
+              description: The power warning threshold in milliwatts.
+              type: number
+            power_high_warn_threshold_dbm:
+              description: The power high warning threshold in dBm.
+              type: number
+            power_low_alarm_threshold_mw:
+              description: The power low alarm threshold in milliwatts.
+              type: number
+            power_low_alarm_threshold_dbm:
+              description: The power low alarm threshold in dBm.
+              type: number
+            power_low_warn_threshold_mw:
+              description: The power low warning threshold in milliwatts.
+              type: number
+            power_low_warn_threshold_dbm:
+              description: The power low warning threshold in dBm.
+              type: number
     Transceiver:
       allOf:
         - $ref: "#/components/schemas/TransceiverModule"
@@ -8281,6 +8352,16 @@ components:
           description: Timestamp since when this interface is UP.
           type: string
           format: date-time
+        optics:
+          description: |
+            The optics informations
+
+            NOTE: This attribute never got populated.
+            Use the /optics endpoint to obtain this information.
+          deprecated: true
+          type: object
+          allOf:
+            - $ref: "#/components/schemas/Optic"
         lag:
           $ref: "#/components/schemas/LinkAggregationGroup"
         ifp_counters:
@@ -10164,6 +10245,10 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/Fan"
+        optics:
+          type: array
+          items:
+            $ref: "#/components/schemas/OpticModule"
         transceivers:
           type: array
           items:

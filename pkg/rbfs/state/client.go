@@ -73,6 +73,8 @@ type APIClient struct {
 
 	OSPFApi *OSPFApiService
 
+	OpticsApi *OpticsApiService
+
 	PIMApi *PIMApiService
 
 	RPKIRTRApi *RPKIRTRApiService
@@ -118,6 +120,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.LLDPApi = (*LLDPApiService)(&c.common)
 	c.NeighborsApi = (*NeighborsApiService)(&c.common)
 	c.OSPFApi = (*OSPFApiService)(&c.common)
+	c.OpticsApi = (*OpticsApiService)(&c.common)
 	c.PIMApi = (*PIMApiService)(&c.common)
 	c.RPKIRTRApi = (*RPKIRTRApiService)(&c.common)
 	c.RoutesApi = (*RoutesApiService)(&c.common)

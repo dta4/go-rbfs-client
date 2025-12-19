@@ -9,11 +9,7 @@
  */
 package state
 
-// System hardware inventory.
-type SystemHardware struct {
-	Chassis      *Chassis                `json:"chassis,omitempty"`
-	Psus         []Psu                   `json:"psus,omitempty"`
-	Fans         []Fan                   `json:"fans,omitempty"`
-	Optics       []OpticModule           `json:"optics,omitempty"`
-	Transceivers []TransceiverModuleInfo `json:"transceivers,omitempty"`
+// The optics informations  NOTE: This attribute never got populated. Use the /optics endpoint to obtain this information.
+type AllOfPhysicalInterfaceDetailOptics struct {
+	Lanes []Lane `json:"lanes,omitempty"`
 }
