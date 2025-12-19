@@ -26,7 +26,7 @@ type SystemApiService service
 
 /*
 SystemApiService Shows system hardware inventory
-Shows chassis, modules, and optics.
+Shows chassis, modules, and transceivers.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return SystemHardware

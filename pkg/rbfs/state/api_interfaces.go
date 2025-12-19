@@ -1045,18 +1045,12 @@ func (a *InterfacesApiService) GetLogicalInterface(ctx context.Context, iflName 
 /*
 InterfacesApiService Shows a physical interface.
 Shows a physical interface including its operational state and administrative states and configured bandwidth.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param ifpName The physical interface name.
- * @param optional nil or *InterfacesApiGetPhysicalInterfaceOpts - Optional Parameters:
-     * @param "Optics" (optional.Bool) -  Include optic informations in the response.  NOTE: Use the /optics endpoint to obtain optics information.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param ifpName The physical interface name.
+
 @return PhysicalInterfaceDetail
 */
-
-type InterfacesApiGetPhysicalInterfaceOpts struct {
-	Optics optional.Bool
-}
-
-func (a *InterfacesApiService) GetPhysicalInterface(ctx context.Context, ifpName string, localVarOptionals *InterfacesApiGetPhysicalInterfaceOpts) (PhysicalInterfaceDetail, *http.Response, error) {
+func (a *InterfacesApiService) GetPhysicalInterface(ctx context.Context, ifpName string) (PhysicalInterfaceDetail, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
@@ -1073,9 +1067,6 @@ func (a *InterfacesApiService) GetPhysicalInterface(ctx context.Context, ifpName
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if localVarOptionals != nil && localVarOptionals.Optics.IsSet() {
-		localVarQueryParams.Add("optics", parameterToString(localVarOptionals.Optics.Value(), ""))
-	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 

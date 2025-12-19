@@ -45,9 +45,7 @@ type PhysicalInterfaceDetail struct {
 	// Carrier transitions count. This attribute is deprecated and has been replaced by the flap_count attribute.
 	CarrierTransitions int `json:"carrier_transitions,omitempty"`
 	// Timestamp since when this interface is UP.
-	UpTime time.Time `json:"up_time,omitempty"`
-	// The optics informations  NOTE: This attribute never got populated. Use the /optics endpoint to obtain this information.
-	Optics      *AllOfPhysicalInterfaceDetailOptics `json:"optics,omitempty"`
-	Lag         *LinkAggregationGroup               `json:"lag,omitempty"`
-	IfpCounters *PhysicalInterfaceCounters          `json:"ifp_counters,omitempty"`
+	UpTime      time.Time                  `json:"up_time,omitempty"`
+	Lag         *LinkAggregationGroup      `json:"lag,omitempty"`
+	IfpCounters *PhysicalInterfaceCounters `json:"ifp_counters,omitempty"`
 }

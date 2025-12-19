@@ -14,6 +14,5 @@ type SystemHardware struct {
 	Chassis      *Chassis                `json:"chassis,omitempty"`
 	Psus         []Psu                   `json:"psus,omitempty"`
 	Fans         []Fan                   `json:"fans,omitempty"`
-	Optics       []OpticModule           `json:"optics,omitempty"`
 	Transceivers []TransceiverModuleInfo `json:"transceivers,omitempty"`
 }
