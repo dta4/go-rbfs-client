@@ -51,13 +51,13 @@ type Transceiver struct {
 	// The transceiver temperature in degree celsius.
 	TemperatureC float64 `json:"temperature_c,omitempty"`
 	// The temperature high alarm threshold in degree celsius.
-	TemperatureHighAlarmThresholdV float64 `json:"temperature_high_alarm_threshold_c,omitempty"`
+	TemperatureHighAlarmThresholdC float64 `json:"temperature_high_alarm_threshold_c,omitempty"`
 	// The temperature high warning threshold in degree celsius.
-	TemperatureHighWarningThresholdV float64 `json:"temperature_high_warning_threshold_c,omitempty"`
+	TemperatureHighWarningThresholdC float64 `json:"temperature_high_warning_threshold_c,omitempty"`
 	// The temperature low alarm threshold in degree celsius.
-	TemperatureLowAlarmThresholdV float64 `json:"temperature_low_alarm_threshold_c,omitempty"`
+	TemperatureLowAlarmThresholdC float64 `json:"temperature_low_alarm_threshold_c,omitempty"`
 	// The temperatue low warning threshold in degree celsius.
-	TemperatureLowWarningThresholdV float64              `json:"temperature_low_warning_threshold_c,omitempty"`
+	TemperatureLowWarningThresholdC float64              `json:"temperature_low_warning_threshold_c,omitempty"`
 	Tx                              *TransceiverModuleTx `json:"tx,omitempty"`
 	Rx                              *TransceiverModuleRx `json:"rx,omitempty"`
 }
